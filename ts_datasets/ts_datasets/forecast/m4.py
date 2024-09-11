@@ -6,11 +6,11 @@
 #
 import logging
 import os
-import requests
 from tqdm import tqdm
 import pandas as pd
 
 from ts_datasets.base import BaseDataset
+from security import safe_requests
 
 logger = logging.getLogger(__name__)
 
@@ -97,7 +97,7 @@ def download(datapath, url, name, split=None):
         logger.info(name + " already exists")
         return
     logger.info("Downloading " + url)
-    r = requests.get(url, stream=True)
+    r = safe_requests.get(url, stream=True)
     with open(file_path, "wb") as f:
         for chunk in r.iter_content(chunk_size=16 * 1024**2):
             if chunk:  # filter out keep-alive new chunks

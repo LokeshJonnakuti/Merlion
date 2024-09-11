@@ -10,13 +10,13 @@ import json
 import logging
 import os
 import re
-import requests
 
 import numpy as np
 import pandas as pd
 import tqdm
 
 from ts_datasets.anomaly.base import TSADBaseDataset
+from security import safe_requests
 
 logger = logging.getLogger(__name__)
 
@@ -190,7 +190,7 @@ class NAB(TSADBaseDataset):
             print("Downloading label file...")
             os.makedirs(os.path.dirname(path), exist_ok=True)
             url = f"https://github.com/numenta/NAB/raw/master/{labelfile}"
-            r = requests.get(url, stream=True)
+            r = safe_requests.get(url, stream=True)
             with open(path, "wb") as f:
                 for chunk in r.iter_content(chunk_size=16 * 1024**2):
                     if chunk:  # filter out keep-alive new chunks
@@ -203,7 +203,7 @@ class NAB(TSADBaseDataset):
             if not os.path.isfile(path):
                 os.makedirs(os.path.dirname(path), exist_ok=True)
                 url = f"https://github.com/numenta/NAB/raw/master/data/{csv}"
-                r = requests.get(url, stream=True)
+                r = safe_requests.get(url, stream=True)
                 with open(path, "wb") as f:
                     for chunk in r.iter_content(chunk_size=16 * 1024**2):
                         if chunk:  # filter out keep-alive new chunks

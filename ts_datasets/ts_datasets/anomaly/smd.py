@@ -7,12 +7,12 @@
 import os
 import sys
 import logging
-import requests
 import tarfile
 import numpy as np
 import pandas as pd
 from pathlib import Path
 from ts_datasets.anomaly.base import TSADBaseDataset
+from security import safe_requests
 
 _logger = logging.getLogger(__name__)
 _logger.setLevel(logging.DEBUG)
@@ -100,7 +100,7 @@ def download(logger, datapath, url, filename):
     # Download the compressed dataset
     if not os.path.exists(compressed_file):
         logger.info("Downloading " + url)
-        with requests.get(url, stream=True) as r:
+        with safe_requests.get(url, stream=True) as r:
             with open(compressed_file, "wb") as f:
                 for chunk in r.iter_content(chunk_size=16 * 1024**2):
                     if chunk:  # filter out keep-alive new chunks
