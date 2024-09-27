@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2023 salesforce.com, inc.
+# Copyright (c) 2024 salesforce.com, inc.
 # All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -17,7 +17,6 @@ logger = logging.getLogger(__name__)
 
 
 class TestResample(unittest.TestCase):
-    
     def _test_granularity(self, granularity, offset=pd.to_timedelta(0)):
         # 6:30am on the 3rd of every other month
         index = pd.date_range("1970-12-01", "2010-01-01", freq=granularity) + offset
@@ -36,7 +35,7 @@ class TestResample(unittest.TestCase):
             transform.granularity = str(transform.granularity)[:-1]
         if str(granularity)[-1] == "E":
             granularity = str(granularity)[:-1]
-        
+
         self.assertEqual(transform.granularity, granularity)
 
         # Make sure the resampled values are correct

@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2022 salesforce.com, inc.
+# Copyright (c) 2024 salesforce.com, inc.
 # All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -29,9 +29,9 @@ def main():
         GeneratorConcatenator(
             generators=[
                 # upward trend
-                TimeSeriesGenerator(f=lambda x: x ** 1.6, n=floor(0.6 * n)),
+                TimeSeriesGenerator(f=lambda x: x**1.6, n=floor(0.6 * n)),
                 # downward trend
-                TimeSeriesGenerator(f=lambda x: -x ** 1.2, n=ceil(0.4 * n)),
+                TimeSeriesGenerator(f=lambda x: -(x**1.2), n=ceil(0.4 * n)),
             ],
             noise=lambda: np.random.normal(0, 500),
             string_outputs=True,
