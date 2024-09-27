@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2023 salesforce.com, inc.
+# Copyright (c) 2024 salesforce.com, inc.
 # All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -93,7 +93,7 @@ class MonthlyWindStats(DetectorBase):
                 stats = self.table[key]
                 score = []
                 for d, mu, sigma in stats:
-                    if sigma == 0: # handle missing value
+                    if sigma == 0:  # handle missing value
                         score.append(0)
                     else:
                         score.append((x - mu) / sigma)
@@ -134,5 +134,3 @@ class MonthlyWindStats(DetectorBase):
                 self.table[t] = self.table[t][-self.config.max_day :]
 
         return self._get_anomaly_score(train_data)
-
-

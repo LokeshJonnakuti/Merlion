@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2023 salesforce.com, inc.
+# Copyright (c) 2024 salesforce.com, inc.
 # All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -24,8 +24,7 @@ class AnomalyModel(ModelMixin, DataMixin):
         "ArimaDetector",
         "DynamicBaseline",
         "IsolationForest",
-        "LocalOutlierFactor"
-        "ETSDetector",
+        "LocalOutlierFactor" "ETSDetector",
         "MSESDetector",
         "ProphetDetector",
         "RandomCutForest",
@@ -35,7 +34,7 @@ class AnomalyModel(ModelMixin, DataMixin):
         "ZMS",
         "DeepPointAnomalyDetector",
     ]
-    multivariate_algorithms = ["IsolationForest", "AutoEncoder", "VAE", "DAGMM", "LSTMED","LocalOutlierFactor"]
+    multivariate_algorithms = ["IsolationForest", "AutoEncoder", "VAE", "DAGMM", "LSTMED", "LocalOutlierFactor"]
     thresholds = ["Threshold", "AggregateAlarms"]
 
     def __init__(self):

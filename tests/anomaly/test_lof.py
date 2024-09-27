@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2023 salesforce.com, inc.
+# Copyright (c) 2024 salesforce.com, inc.
 # All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -44,7 +44,7 @@ class TestLOF(unittest.TestCase):
                         ExponentialMovingAverage(alpha=0.9, normalize=True),
                         MovingAverage(weights=[0.1, 0.2, 0.3, 0.4]),
                     ]
-                )
+                ),
             )
         )
         print()
