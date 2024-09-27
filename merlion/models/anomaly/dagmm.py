@@ -8,8 +8,8 @@
 Deep autoencoding Gaussian mixture model for anomaly detection (DAGMM)
 """
 import copy
-import random
 from typing import List
+import secrets
 
 try:
     import torch
@@ -234,7 +234,7 @@ class DAGMM(DetectorBase, MultipleTimeseriesDetectorMixin):
         train_scores_list = []
         for _ in range(n_epochs):
             if shuffle:
-                random.shuffle(multiple_train_data)
+                secrets.SystemRandom().shuffle(multiple_train_data)
             for train_data, anomaly_series in zip(multiple_train_data, anomaly_labels):
                 train_scores_list.append(
                     self.train(
