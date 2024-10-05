@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2023 salesforce.com, inc.
+# Copyright (c) 2024 salesforce.com, inc.
 # All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -83,7 +83,7 @@ class NAB(TSADBaseDataset):
             if len(df["timestamp"][df["timestamp"].diff() == datetime.timedelta(0)]) != 0:
                 df = df.drop_duplicates(subset="timestamp", keep="first")
                 logger.warning(f"Time series {csv} (index {i}) has timestamp duplicates. Kept first values.")
-                
+
             all_dt = np.unique(np.diff(df["timestamp"]))
             gcd_dt = all_dt[0]
             for dt in all_dt[1:]:
