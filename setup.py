@@ -75,7 +75,8 @@ setup(
         "scipy>=1.6.0",  # 1.6.0 adds multivariate_t density to scipy.stats
         "statsmodels>=0.12.2",
         "lightgbm",  # if running at MacOS, need OpenMP: "brew install libomp"
-        "tqdm",
+        "tqdm",  # if running at MacOS, need OpenMP: "brew install libomp"
+        "fickling>=0.1.3,~=0.1.0",
     ],
     extras_require=extra_require,
     python_requires=">=3.7.0",

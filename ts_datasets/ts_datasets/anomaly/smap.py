@@ -14,6 +14,7 @@ import numpy as np
 import pandas as pd
 from ts_datasets.anomaly.base import TSADBaseDataset
 from ts_datasets.anomaly.smd import download, combine_train_test_datasets
+import fickling
 
 _logger = logging.getLogger(__name__)
 _logger.setLevel(logging.DEBUG)
@@ -87,10 +88,10 @@ def preprocess(logger, data_folder, dataset):
 
 def load_data(directory, dataset):
     with open(os.path.join(directory, f"{dataset}_test.pkl"), "rb") as f:
-        test_data = pickle.load(f)
+        test_data = fickling.load(f)
     with open(os.path.join(directory, f"{dataset}_test_label.pkl"), "rb") as f:
-        test_labels = pickle.load(f)
+        test_labels = fickling.load(f)
     with open(os.path.join(directory, f"{dataset}_train.pkl"), "rb") as f:
-        train_data = pickle.load(f)
+        train_data = fickling.load(f)
     train_df, test_df = pd.DataFrame(train_data), pd.DataFrame(test_data)
     return train_df, test_df, test_labels.astype(int)
